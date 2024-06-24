@@ -4,10 +4,7 @@ import BookDetail from "../models/book_detail";
 
 router.post("/");
 
-router.post("/book_detail", async (req, res, next) => {
-    console.log("book_detail!!!");
-    console.log("req.body:", req.body);
-    
+router.post("/book_detail", async (req, res, next) => {    
   try {
     const post = await BookDetail.create(req.body);
     res.json(post);

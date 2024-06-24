@@ -21,13 +21,19 @@ app.use(express.json());
 
 const port = process.env.PORT;
 
+// Middleware ทั่วไป
+app.use((req, res, next) => {
+  console.log(`${req.method} request for '${req.url}'`);
+  next();
+});
+
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
 });
-
 // Use routes
 app.use(authRoute);
 app.use(bookRoute);
+
 
 app.listen(port, async () => {
   //await sequelize.sync({ force: true });
